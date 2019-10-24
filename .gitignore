@@ -1,0 +1,8 @@
+*.mp4
+*.dcm
+*.DCM
+*.jpg
+*.png
+*.npy
+www.raddq.com/
+data-science-aorta.ipynb

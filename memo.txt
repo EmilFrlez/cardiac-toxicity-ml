@@ -1,0 +1,39 @@
+gifview --animate 
+
+Pre first file at -784.5mm
+Post first file at 1083.0mm
+
+https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
+
+--------------------------------------------------
+
+Hey Mike,
+
+In the DICOM patient coordinate system, the x axis increases to the
+patient left, the y axis increases to patient posterior and the z axis
+increases to patient superior.  The Image Position (Patient) tag in the
+DICOM dose file gives you the xyz coordinates of the center of the first
+pixel.  The Image Orientation (Patient) tag gives you the directional
+cosines of the image axes with respect to that patient coordinate system.
+
+If your patient is Head First Supine, you can generate xyz axes for your
+pixel data like this (assuming I haven't botched the orientation):
+
+image=dicom.read_file(filename)
+
+rows = image.Rows
+columns = image.Columns
+pixel_spacing = image.PixelSpacing
+image_position = image.ImagePositionPatient
+
+x_axis = numpy.arange(columns)*pixel_spacing[0] + image_position[0]
+y_axis = numpy.arange(rows)*pixel_spacing[1] + image_position[1]
+z_axis = numpy.array(image.GridFrameOffsetVector) + image_position[2]
+
+You can find a much better explanation of this in the Medical Image FAQ at
+http://www.dclunie.com/medical-image-faq/html/part2.html
+and a diagram in the presentation at
+http://atc.wustl.edu/home/news/2004_dicom_workshop/WRB2004%20Image%20IODs%20v3.pdf
+
+Steve
+- show quoted text -

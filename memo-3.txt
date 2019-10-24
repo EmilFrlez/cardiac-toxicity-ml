@@ -1,0 +1,19 @@
+https://stackoverflow.com/questions/46666762/getting-dicom-structure-contours-as-array-in-python
+
+
+
+So if I have an image (CT, MRI, etc.) or even a dose from radiation therapy I can pull out the dose or image values into an array through:
+
+import dicom
+
+ds = dicom.read_file("dicom_file.dcm")
+
+print ds.pixel_array
+
+This is pretty straightforward, and gives me the ability to manipulate images/doses as I want. However, often you also have a structure file that includes different contoured structures that you can then see in an image viewer or something like that. Again, pretty straightforward.
+
+My problem is that I would also like these individual structures as an array as well. And if I run the same code I just get TypeError: No pixel data found in this dataset.
+
+I'm guessing that structure DICOM files are not "made" the same way as dose/images DICOM files.
+
+So is there a solution to this that I haven't been able to find ? I have also looked at the dicompyler_core package, but from what I could see there wasn't any way to "just" get out the different structures into arrays.

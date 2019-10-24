@@ -1,0 +1,23 @@
+data-science-aorta.ipynb 
+data science bowl example that reads
+104 PreTx UVa DICOM files. Small modifications to make it run on pion.
+Full range of HU numbers -1000->1300
+
+data-science-bowl.ipynb 
+"data science bowl example that reads
+104 PreTx UVa DICOM files. Small modifications to make it run on pion.
+HU numbers 30-70 (blood) set to 1, all others to zero.
+
+aorta.ipynb reads PreTx- and Post-Tx png files and produces
+plots of the aorta area: x0=260, y0=260 +-60 pixels (for 512x512 images)
+
+data-science-aorta-1.ipynb 
+data science bowl example that reads
+104 PreTx UVa DICOM files. Small modifications to make it run on pion.
+images renormalized to black/white 0 and ones, window at 260+-30
+
+images of zoom-in aorta are saved in
+/home/ef2p/Kaggle/cardiac/Documents/fullimages_0.npy file!
+
+
+
